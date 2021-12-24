@@ -2,8 +2,6 @@
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="docsearch:name" content="eCAL Documentation" />
     <meta name="docsearch:package_type" content="" />
@@ -104,6 +102,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../development/build_ecal.html">Building eCAL</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/building_ecal_from_source.html">Building eCAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/building_ecal_with_conan_dependencies.html">Building eCAL with Conan dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/ecal_cmake_options.html">CMake options</a></li>
 </ul>
 </li>
@@ -223,6 +222,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a8bcb30275052a25eb7baa8cddf238a8d.html">Function eCAL::Util::EnableLoopback</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a8a6da5c64336cb74d3c3d8d6baae6596.html">Function eCAL::Util::GetDescription(const std::string&amp;, std::string&amp;)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a6b718f778eb845effac2fa3cf61973cd.html">Function eCAL::Util::GetDescription(const std::string&amp;)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a27263f5f699870e349210f85c0cf331f.html">Function eCAL::Util::GeteCALActiveIniFile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1abc702b1c24eecfeca0472010ff548a69.html">Function eCAL::Util::GeteCALConfigPath</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a2e4f8a5d9ee1e9c657b98a618132170f.html">Function eCAL::Util::GeteCALDefaultIniFile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a2576cb50ec46867931c197b4d1935f95.html">Function eCAL::Util::GeteCALHomePath</a></li>
@@ -360,8 +360,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/compatibility.html">eCAL Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/documentation.html">Edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/configuration.html">eCAL Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/performance.html">Performance measurements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/transport_layers.html">Transport Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/threading_model.html">Threading model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../license/ecal_license.html">eCAL License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../license/thirdparty_licenses.html">Thirdparty Licenses</a><ul>
@@ -385,6 +387,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../_download_archive/download_archive.html">eCAL Download Archive</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_9_2.html">eCAL 5.9.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_9_1.html">eCAL 5.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_9_0.html">eCAL 5.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_15.html">eCAL 5.8.15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_14.html">eCAL 5.8.14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_13.html">eCAL 5.8.13</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_12.html">eCAL 5.8.12</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_10.html">eCAL 5.8.10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_9.html">eCAL 5.8.9</a></li>
@@ -472,7 +480,7 @@
                         <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
                             <div itemprop="articleBody">
 <!-- body -->
-    <section id="hello-world-with-protobuf">
+    <div class="section" id="hello-world-with-protobuf">
 <span id="getting-started-hello-world-proto"></span><h1><span class="section-number">7.2. </span>Hello World with protobuf<a class="headerlink" href="#hello-world-with-protobuf" title="Permalink to this headline">¶</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -496,7 +504,7 @@ Our recommended way however is to use Google protobuf, because:</p>
 <p>It is important to remember, that all your applications must agree on the data format.
 As protobuf messages are defined in <code class="file docutils literal notranslate"><span class="pre">.proto</span></code> files, all of your applications should be compiled with the same files.</p>
 </div>
-<section id="protobuf-sender">
+<div class="section" id="protobuf-sender">
 <h2><span class="section-number">7.2.1. </span>Protobuf sender<a class="headerlink" href="#protobuf-sender" title="Permalink to this headline">¶</a></h2>
 <p>Let’s implement a small application, that lets the user input his name and send a message to an eCAL topic.
 As the sender and receiver need the same .proto files, we place them in a separate directory next to the source directories for the sender and the receiver:</p>
@@ -562,21 +570,13 @@ As the sender and receiver need the same .proto files, we place them in a separa
 24
 25
 26
-27
-28
-29
-30
-31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.0</span><span class="p">)</span>
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.0</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_FIND_PACKAGE_PREFER_CONFIG</span> <span class="s">ON</span><span class="p">)</span>
 
 <span class="nb">project</span><span class="p">(</span><span class="s">protobuf_snd</span><span class="p">)</span>
 
 <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span> <span class="s">14</span><span class="p">)</span>
 <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span> <span class="s">ON</span><span class="p">)</span>
-
-<span class="nb">if</span><span class="p">(</span><span class="s">MSVC</span><span class="p">)</span>
-  <span class="c"># CMake &gt;= 3.15 will erroneously define PROTOBUF_USE_DLLS otherwise</span>
-  <span class="nb">set</span> <span class="p">(</span><span class="s">Protobuf_USE_STATIC_LIBS</span> <span class="s">TRUE</span><span class="p">)</span> 
-<span class="nb">endif</span><span class="p">()</span>
 
 <span class="nb">find_package</span><span class="p">(</span><span class="s">eCAL</span> <span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">find_package</span><span class="p">(</span><span class="s">Protobuf</span> <span class="s">REQUIRED</span><span class="p">)</span>
@@ -602,9 +602,9 @@ As the sender and receiver need the same .proto files, we place them in a separa
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>What is happening here?</strong></p>
-<p><strong>Line 14</strong> adds Protobuf as dependency</p>
-<p><strong>Line 20-22</strong> Creates a list of .proto files. We only have one.</p>
-<p><strong>Line 26</strong> Compiles the .proto file to a C++ header file (<code class="file docutils literal notranslate"><span class="pre">hello_world.pb.h</span></code>).
+<p><strong>Line 10</strong> adds Protobuf as dependency</p>
+<p><strong>Line 16-18</strong> Creates a list of .proto files. We only have one.</p>
+<p><strong>Line 22</strong> Compiles the .proto file to a C++ header file (<code class="file docutils literal notranslate"><span class="pre">hello_world.pb.h</span></code>).
 The <code class="docutils literal notranslate"><span class="pre">PROTOBUF_TARGET_CPP</span></code> function is a convenience function from eCAL.
 If you have already worked with Protobuf and CMake, you may be more familiar with the following code, which basically does the same thing:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="p">)</span>
@@ -612,7 +612,7 @@ If you have already worked with Protobuf and CMake, you may be more familiar wit
 <span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="o">${</span><span class="nv">source_files</span><span class="o">}</span> <span class="o">${</span><span class="nv">PROTO_SRCS</span><span class="o">}</span> <span class="o">${</span><span class="nv">PROTO_HDRS</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Line 30</strong> links the executable against protobuf</p>
+<p><strong>Line 26</strong> links the executable against protobuf</p>
 </div>
 </li>
 <li><p><i class="far fa-file-alt"></i> <code class="file docutils literal notranslate"><span class="pre">main.cpp</span></code>:</p>
@@ -726,8 +726,8 @@ Sending different messages to the same topic is a bad idea and will break the de
 <p>The eCAL Monitor will not start listening to messages, until you open the reflection window.
 So, you will only see messages that were sent <em>after</em> you have opened the window.</p>
 </div>
-</section>
-<section id="protobuf-receiver">
+</div>
+<div class="section" id="protobuf-receiver">
 <h2><span class="section-number">7.2.2. </span>Protobuf receiver<a class="headerlink" href="#protobuf-receiver" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p><i class="far fa-file-alt"></i> <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
@@ -757,21 +757,13 @@ So, you will only see messages that were sent <em>after</em> you have opened the
 24
 25
 26
-27
-28
-29
-30
-31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.0</span><span class="p">)</span>
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.0</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_FIND_PACKAGE_PREFER_CONFIG</span> <span class="s">ON</span><span class="p">)</span>
 
 <span class="nb">project</span><span class="p">(</span><span class="s">protobuf_rec</span><span class="p">)</span>
 
 <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span> <span class="s">14</span><span class="p">)</span>
 <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span> <span class="s">ON</span><span class="p">)</span>
-
-<span class="nb">if</span><span class="p">(</span><span class="s">MSVC</span><span class="p">)</span>
-  <span class="c"># CMake &gt;= 3.15 will erroneously define PROTOBUF_USE_DLLS otherwise</span>
-  <span class="nb">set</span> <span class="p">(</span><span class="s">Protobuf_USE_STATIC_LIBS</span> <span class="s">TRUE</span><span class="p">)</span> 
-<span class="nb">endif</span><span class="p">()</span>
 
 <span class="nb">find_package</span><span class="p">(</span><span class="s">eCAL</span> <span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">find_package</span><span class="p">(</span><span class="s">Protobuf</span> <span class="s">REQUIRED</span><span class="p">)</span>
@@ -880,8 +872,8 @@ Just like the publisher, it is templated to the <code class="docutils literal no
 <p>Congratulations, you have completed the Getting Started chapter!
 Now go ahead and use eCAL in your real-world scenario.</p>
 <p>If you experience issues, you can create a <a class="reference external" href="https://github.com/continental/ecal/issues">GitHub issue</a>, to get help.</p>
-</section>
-<section id="files">
+</div>
+<div class="section" id="files">
 <h2><span class="section-number">7.2.3. </span>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
 <pre class="literal-block"><i class="far fa-folder-open"></i>
 ├─ <i class="far fa-folder-open"></i> proto_messages
@@ -894,8 +886,8 @@ Now go ahead and use eCAL in your real-world scenario.</p>
 └─ <i class="far fa-folder-open"></i> protobuf_rec
    ├─ <i class="far fa-file-alt"></i> <a class="reference download internal" download="" href="../_downloads/599e0541a3c4051667f6c5e413bec2a7/CMakeLists.txt"><code class="xref download docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code></a>
    └─ <i class="far fa-file-alt"></i> <a class="reference download internal" download="" href="../_downloads/745ee1bb61a6469c7703ba1c5f49db57/main.cpp"><code class="xref download docutils literal notranslate"><span class="pre">main.cpp</span></code></a></pre>
-</section>
-</section>
+</div>
+</div>
 
 <!-- /body -->
                             </div>

@@ -2,8 +2,6 @@
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="docsearch:name" content="eCAL Documentation" />
     <meta name="docsearch:package_type" content="" />
@@ -103,6 +101,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../development/build_ecal.html">Building eCAL</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/building_ecal_from_source.html">Building eCAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/building_ecal_with_conan_dependencies.html">Building eCAL with Conan dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/ecal_cmake_options.html">CMake options</a></li>
 </ul>
 </li>
@@ -222,6 +221,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a8bcb30275052a25eb7baa8cddf238a8d.html">Function eCAL::Util::EnableLoopback</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a8a6da5c64336cb74d3c3d8d6baae6596.html">Function eCAL::Util::GetDescription(const std::string&amp;, std::string&amp;)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a6b718f778eb845effac2fa3cf61973cd.html">Function eCAL::Util::GetDescription(const std::string&amp;)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a27263f5f699870e349210f85c0cf331f.html">Function eCAL::Util::GeteCALActiveIniFile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1abc702b1c24eecfeca0472010ff548a69.html">Function eCAL::Util::GeteCALConfigPath</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a2e4f8a5d9ee1e9c657b98a618132170f.html">Function eCAL::Util::GeteCALDefaultIniFile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_api/function_ecal__util_8h_1a2576cb50ec46867931c197b4d1935f95.html">Function eCAL::Util::GeteCALHomePath</a></li>
@@ -359,8 +359,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/compatibility.html">eCAL Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/documentation.html">Edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/configuration.html">eCAL Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/performance.html">Performance measurements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/transport_layers.html">Transport Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/threading_model.html">Threading model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../license/ecal_license.html">eCAL License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../license/thirdparty_licenses.html">Thirdparty Licenses</a><ul>
@@ -384,6 +386,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../_download_archive/download_archive.html">eCAL Download Archive</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_9_2.html">eCAL 5.9.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_9_1.html">eCAL 5.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_9_0.html">eCAL 5.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_15.html">eCAL 5.8.15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_14.html">eCAL 5.8.14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_13.html">eCAL 5.8.13</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_12.html">eCAL 5.8.12</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_10.html">eCAL 5.8.10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_download_archive/download_archive_ecal_5_8_9.html">eCAL 5.8.9</a></li>
@@ -473,7 +481,7 @@
                         <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
                             <div itemprop="articleBody">
 <!-- body -->
-    <section id="installing-ecal">
+    <div class="section" id="installing-ecal">
 <span id="getting-started-setup"></span><h1><span class="section-number">2. </span>Installing eCAL<a class="headerlink" href="#installing-ecal" title="Permalink to this headline">¶</a></h1>
 <p>Before using eCAL, you must install it on your PC.
 This section covers how to install eCAL on Microsoft Windows and Ubuntu (both 64 bit only).
@@ -484,7 +492,7 @@ We will cover both scenarios in the next sections.</p>
 <p class="admonition-title">See also</p>
 <p>If you are looking for a tutorial on how to build eCAL from source (e.g. to get it working on a non-supported OS) please refer to <a class="reference internal" href="../development/building_ecal_from_source.html#development-building-ecal-from-source"><span class="std std-ref">Building eCAL from source</span></a> .</p>
 </div>
-<section id="fa-windows-installing-ecal-on-windows">
+<div class="section" id="fa-windows-installing-ecal-on-windows">
 <h2><span class="section-number">2.1. </span><i class="fab fa-windows"></i> Installing eCAL on Windows<a class="headerlink" href="#fa-windows-installing-ecal-on-windows" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Choose your desired eCAL Version from the <a class="reference internal" href="../_download_archive/download_archive.html#download-archive"><span class="std std-ref">eCAL Download Archive</span></a> and download the Windows installer.
@@ -493,8 +501,8 @@ New users should download the latest Version.</p></li>
 <img alt="eCAL Setup" src="../_images/setup.png" />
 </li>
 </ol>
-</section>
-<section id="fa-ubuntu-installing-ecal-on-ubuntu">
+</div>
+<div class="section" id="fa-ubuntu-installing-ecal-on-ubuntu">
 <h2><span class="section-number">2.2. </span><i class="fab fa-ubuntu"></i> Installing eCAL on Ubuntu<a class="headerlink" href="#fa-ubuntu-installing-ecal-on-ubuntu" title="Permalink to this headline">¶</a></h2>
 <p>For Ubuntu, you can either install eCAL from a PPA (Personal Package Archive) or manually from debian files.
 For most users, the PPA will provide the easiest way of installing eCAL.
@@ -503,12 +511,12 @@ The PPA also supports more Ubuntu Versions and CPU Architectures (x86, x64, arm6
 <p class="admonition-title">See also</p>
 <p>Advanced users can also <a class="reference internal" href="../development/building_ecal_from_source.html#development-building-ecal-from-source"><span class="std std-ref">compile eCAL from source</span></a>.</p>
 </div>
-<section id="fa-ubuntu-automatically-install-ecal-from-a-ppa">
+<div class="section" id="fa-ubuntu-automatically-install-ecal-from-a-ppa">
 <span id="getting-started-setup-ubuntu-ppa"></span><h3><span class="section-number">2.2.1. </span><i class="fab fa-ubuntu"></i> Automatically install eCAL from a PPA<a class="headerlink" href="#fa-ubuntu-automatically-install-ecal-from-a-ppa" title="Permalink to this headline">¶</a></h3>
 <p>Installing eCAL from a PPA will cause apt-get to automatically update eCAL for you.
 You can choose from different PPAs, depending on your desired upgrade path.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Rolling Release</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">eCAL 5.8</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">eCAL 5.7</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>This is the rolling release PPA.
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Rolling Release</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">eCAL 5.9</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">eCAL 5.8</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">eCAL 5.7</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>This is the rolling release PPA.
 It will always upgrade your installation and you will always receive the latest-and-greatest eCAL version.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo add-apt-repository ppa:ecal/ecal-latest
 sudo apt-get update
@@ -516,21 +524,32 @@ sudo apt-get install ecal
 </pre></div>
 </div>
 <p>Also check out this PPA on <a class="reference external" href="https://launchpad.net/~ecal/+archive/ubuntu/ecal-latest">Launchpad</a>!</p>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>This PPA will always stay on eCAL 5.8.
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>This PPA will always stay on eCAL 5.9.
+You will receive patches as long as eCAL 5.9 is supported.
+If you want to upgrade to a new eCAL Version, you will have to manually add the new PPA.</p>
+<p>At the moment, eCAL 5.9 is the latest supported version.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo add-apt-repository ppa:ecal/ecal-5.9
+sudo apt-get update
+sudo apt-get install ecal
+</pre></div>
+</div>
+<p>Also check out this PPA on <a class="reference external" href="https://launchpad.net/~ecal/+archive/ubuntu/ecal-5.9">Launchpad</a>!</p>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>This PPA will always stay on eCAL 5.8.
 You will receive patches as long as eCAL 5.8 is supported.
 If you want to upgrade to a new eCAL Version, you will have to manually add the new PPA.</p>
-<p>At the moment, eCAL 5.8 is the latest supported version.</p>
+<p>At the moment, eCAL 5.8 is the supported legacy-version.
+Support will be dropped when the next eCAL Version is released.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo add-apt-repository ppa:ecal/ecal-5.8
 sudo apt-get update
 sudo apt-get install ecal
 </pre></div>
 </div>
 <p>Also check out this PPA on <a class="reference external" href="https://launchpad.net/~ecal/+archive/ubuntu/ecal-5.8">Launchpad</a>!</p>
-</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>This PPA will always stay on eCAL 5.7.
-You will receive patches as long as eCAL 5.7 is supported.
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><p>This PPA will always stay on eCAL 5.7.
 If you want to upgrade to a new eCAL Version, you will have to manually add the new PPA.</p>
-<p>At the moment, eCAL 5.7 is the supported legacy-version.
-Support will be dropped when the next eCAL Version is released.</p>
+<p>eCAL 5.7 is not supported any more and will not receive patches.
+You can still use the PPA to install the latest eCAL 5.7.
+Please consider upgrading to a newer version.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo add-apt-repository ppa:ecal/ecal-5.7
 sudo apt-get update
 sudo apt-get install ecal
@@ -538,8 +557,8 @@ sudo apt-get install ecal
 </div>
 <p>Also check out this PPA on <a class="reference external" href="https://launchpad.net/~ecal/+archive/ubuntu/ecal-5.7">Launchpad</a>!</p>
 </div></div>
-</section>
-<section id="fa-ubuntu-manually-install-ecal-from-a-deb-file">
+</div>
+<div class="section" id="fa-ubuntu-manually-install-ecal-from-a-deb-file">
 <h3><span class="section-number">2.2.2. </span><i class="fab fa-ubuntu"></i> Manually install eCAL from a .deb file<a class="headerlink" href="#fa-ubuntu-manually-install-ecal-from-a-deb-file" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -569,9 +588,9 @@ sudo apt install libc6 libcurl4 libgcc-s1 libhdf5-103 libprotobuf17 libqt5core5a
 </div>
 </li>
 </ol>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 <!-- /body -->
                             </div>
