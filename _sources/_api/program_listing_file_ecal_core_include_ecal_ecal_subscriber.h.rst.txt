@@ -71,7 +71,14 @@ Program Listing for File ecal_subscriber.h
    
        bool SetID(const std::set<long long>& id_set_);
    
+       bool SetAttribute(const std::string& attr_name_, const std::string& attr_value_);
+   
+       bool ClearAttribute(const std::string& attr_name_);
+   
+       [[deprecated]]
        size_t Receive(std::string& buf_, long long* time_ = nullptr, int rcv_timeout_ = 0) const;
+   
+       bool ReceiveBuffer(std::string& buf_, long long* time_ = nullptr, int rcv_timeout_ = 0) const;
    
        bool AddReceiveCallback(ReceiveCallbackT callback_);
    
@@ -242,10 +249,30 @@ Program Listing for File ecal_subscriber.h
          return(buf_.size());
        }
    
+       bool ReceiveBuffer(std::string& buf_, long long* time_ = nullptr, int rcv_timeout_ = 0) const
+       {
+         if (!m_subscriber) return(0);
+         void* buf     = nullptr;
+         int   buf_len = 0;
+         bool success = eCAL_Sub_Receive_Buffer_Alloc(m_subscriber, &buf, &buf_len, time_, rcv_timeout_);
+         if (buf_len > 0)
+         {
+           buf_ = std::string(static_cast<char*>(buf), buf_len);
+           eCAL_FreeMem(buf);
+         }
+         else
+         {
+           buf_.clear();
+         }
+         return(success);
+       }
+   
        static void ReceiveCallback(const char* topic_name_, const struct SReceiveCallbackDataC* data_, void* par_)
        {
          if(par_ == nullptr) return;
          CSubscriber* sub = static_cast<CSubscriber*>(par_);
+         if (sub->m_receive_callback == nullptr) return;
+   
          SReceiveCallbackData data;
          data.buf   = data_->buf;
          data.size  = data_->size;
@@ -258,7 +285,7 @@ Program Listing for File ecal_subscriber.h
        {
          if(!m_subscriber) return(false);
          m_receive_callback = callback_;
-         return(eCAL_Sub_AddReceiveCallbackC(m_subscriber, &CSubscriber::ReceiveCallback, this) != 0);
+         return(eCAL_Sub_AddReceiveCallback(m_subscriber, &CSubscriber::ReceiveCallback, this) != 0);
        }
    
        bool RemReceiveCallback()
@@ -271,6 +298,8 @@ Program Listing for File ecal_subscriber.h
        {
          if (par_ == nullptr) return;
          CSubscriber* sub = static_cast<CSubscriber*>(par_);
+         if (sub->m_event_callback == nullptr) return;
+   
          SSubEventCallbackData data;
          data.type = data_->type;
          data.time = data_->time;
@@ -280,7 +309,7 @@ Program Listing for File ecal_subscriber.h
        {
          if (!m_subscriber) return(false);
          m_event_callback = callback_;
-         return(eCAL_Sub_AddEventCallbackC(m_subscriber, type_, &CSubscriber::SubEventCallback, this) != 0);
+         return(eCAL_Sub_AddEventCallback(m_subscriber, type_, &CSubscriber::SubEventCallback, this) != 0);
        }
    
        bool RemEventCallback(eCAL_Subscriber_Event type_)
