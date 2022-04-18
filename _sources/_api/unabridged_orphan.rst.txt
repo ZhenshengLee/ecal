@@ -105,6 +105,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_ecal_core_include_ecal_ecal_config.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_ecal_core_include_ecal_ecal_core.h.rst
 
 .. toctree::
@@ -250,6 +255,11 @@ Files
 Pages
 *****
 
+
+.. toctree::
+   :maxdepth: 5
+
+   page_experimental.rst
 
 .. toctree::
    :maxdepth: 5
