@@ -63,6 +63,8 @@ eCAL 5.7
    download_archive_ecal_5_7_8.rst
    download_archive_ecal_5_7_6.rst
    download_archive_ecal_5_7_5.rst
+   download_archive_ecal_5_7_4.rst
+   download_archive_ecal_5_7_3.rst
    download_archive_ecal_5_7_1.rst
 
 
@@ -86,6 +88,7 @@ eCAL 5.5
    download_archive_ecal_5_5_5.rst
    download_archive_ecal_5_5_4.rst
    download_archive_ecal_5_5_3.rst
+   download_archive_ecal_5_5_2.rst
    download_archive_ecal_5_5_1.rst
    download_archive_ecal_5_5_0.rst
 
